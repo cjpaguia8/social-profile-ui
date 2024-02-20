@@ -93,16 +93,16 @@ void main() {
 
 While you have the freedom to experiment with different widget structures, ensure that your widget tree includes **at least one instance of each** of the following widget types (you can include multiple instances of some):
 
-- `AppBar`
-- `Column`
-- `Container`
-- `Image`
-- `ListView`
-- `MaterialApp`
-- `Row`
-- `Scaffold`
-- `SizedBox`
-- `Text`
+- `AppBar` x
+- `Column` x
+- `Container` x
+- `Image` x
+- `ListView` x
+- `MaterialApp` x
+- `Row` x
+- `Scaffold` x
+- `SizedBox` x
+- `Text` x
 
 
 Optional widgets that you may find useful/interesting:
