@@ -1,0 +1,9 @@
+{
+    "workbench.colorCustomizations": {
+        "[DuoTone Dark Forest]": {
+            "activityBar.foreground": "#4a5d23",
+            "activityBar.inactiveForeground": "#a0b36a",
+            "editor.background": "#1f1f1f",
+        }
+    }
+}
