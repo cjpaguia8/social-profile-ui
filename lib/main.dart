@@ -28,6 +28,53 @@ void main() {
         name: 'Cats',
         imagePath: 'assets/images/interest3.jpg',
       )
+    ],
+    posts: [
+      Post(
+        title: "Ranking song of my favorite songs", 
+        body: '''
+1.  "Champagne Supernova" by Oasis
+2.  "Comfortably Numb" by Pink Floyd
+3.  "Bohemian Rhapsody" by Queen
+4.  "Stairway to Heaven" by Led Zeppelin
+5.  "Imagine" by John Lennon
+6.  "Kashmir" by Led Zeppelin
+7.  "Hey Jude" by The Beatles
+8.  "The Sound of Silence" by Simon & Garfunkel
+9.  "Time" by Pink Floyd
+10.  "Baba ORiley" by The Who'''
+      ),
+      Post(
+        title: "About a couple of my coding projects", 
+        body: 
+        '''
+As a junior in college studying computer science, I've embarked on several coding projects that have enriched my learning experience and expanded my skill set. Here's a brief overview of a couple of my projects:
+
+Online Bookstore Web App: Developed using HTML, CSS, JavaScript, and PHP, this project involved creating an intuitive online bookstore with features like user authentication, dynamic search, and responsive design. It sharpened my front-end and back-end development skills and introduced me to MySQL database management.
+
+Data Analysis Tool: Built with Python and libraries like Pandas, Matplotlib, and Seaborn, this project enabled me to analyze real-world datasets, perform statistical analysis, and visualize data for insights. It deepened my understanding of data handling, analysis techniques, and visualization best practices.
+
+These projects have been instrumental in my growth as a developer, offering hands-on experience, problem-solving challenges, and valuable insights into the world of computer science. As I continue my journey, I look forward to tackling more projects and further refining my skills.'''
+      ),
+      Post(
+        title: "A poem I made about my cat", 
+        body: 
+        '''
+In shadows deep, with eyes aglow,
+Leo prowls where moonbeams flow.
+Silent steps, a velvet grace,
+In his ebony cloak, he finds his space.
+
+With whiskers fine and fur so sleek,
+He roams the night, mysterious and meek.
+A guardian of darkness, noble and wise,
+In Leo's gaze, a thousand tales arise.'''
+      ),
+      Post(
+        title: "First post!", 
+        body: '''
+Hi everybody! I'm Shayan and this is my first post ever on this app. Make sure to follow me if you like my content and want to see more!'''
+      )
     ]
   );
   ColorTheme colorTheme = ColorTheme(
@@ -60,6 +107,7 @@ class UserInfo {
   final String city;
   final String profilePicture;
   final List<Interest> interests;
+  final List<Post> posts;
 
   UserInfo({
     required this.name,
@@ -70,6 +118,7 @@ class UserInfo {
     required this.city,
     required this.profilePicture,
     required this.interests,
+    required this.posts,
   });
 }
 
@@ -103,6 +152,16 @@ class Interest {
   });
 }
 
+class Post {
+  final String title;
+  final String body;
+
+  Post({
+    required this.title,
+    required this.body
+  });
+}
+
 class UserInfoPage extends StatelessWidget {
   final UserInfo userInfo;
   final ColorTheme colorTheme;
@@ -112,9 +171,7 @@ class UserInfoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       appBar: AppBar(
-        
         title: Text(userInfo.uid, style: TextStyle(fontSize: 26, color: colorTheme.light1, fontWeight: FontWeight.w600, decoration: TextDecoration.underline, decorationColor: Colors.white)),
         elevation: 20.0,
         shadowColor: colorTheme.shadow,
@@ -134,20 +191,168 @@ class UserInfoPage extends StatelessWidget {
         children: [
           ProfileIntro(colorTheme: colorTheme, userInfo: userInfo),
           const SizedBox(height: 30),
-          // Text(userInfo.about, style: TextStyle(color: colorTheme.light1)),
-          // const SizedBox(height:30),
           FollowButton(colorTheme: colorTheme),
           const SizedBox(height: 30),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              InterestDisplay(colorTheme: colorTheme, interest: userInfo.interests[0]),
-              InterestDisplay(colorTheme: colorTheme, interest: userInfo.interests[1]),
-              InterestDisplay(colorTheme: colorTheme, interest: userInfo.interests[2]),
-            ]
+          AboutSection(colorTheme: colorTheme, userInfo: userInfo),
+          const SizedBox(height:20),
+          InterestsSection(colorTheme: colorTheme, userInfo: userInfo),
+          const SizedBox(height: 30),
+          
+          Container(
+            decoration: BoxDecoration(
+              color: colorTheme.hue3, 
+              borderRadius: BorderRadius.circular(20)
+            ),
+            child: Container(
+              padding: const EdgeInsets.only(top: 20, bottom:20, left: 20, right: 20),
+              child: Column(
+                children: [
+                  PostDisplay(colorTheme: colorTheme, post: userInfo.posts[0], profilePicture: userInfo.profilePicture),
+                  const SizedBox(height:30),
+                  PostDisplay(colorTheme: colorTheme, post: userInfo.posts[1], profilePicture: userInfo.profilePicture),
+                  const SizedBox(height:30),
+                  PostDisplay(colorTheme: colorTheme, post: userInfo.posts[2], profilePicture: userInfo.profilePicture),
+                  const SizedBox(height:30),
+                  PostDisplay(colorTheme: colorTheme, post: userInfo.posts[3], profilePicture: userInfo.profilePicture)
+                ]
+              ),
+            )
           )
+
+
         ],
       )
+    );
+  }
+}
+
+class PostDisplay extends StatelessWidget {
+  const PostDisplay({
+    super.key,
+    required this.colorTheme,
+    required this.post,
+    required this.profilePicture,
+  });
+
+  final ColorTheme colorTheme;
+  final Post post;
+  final String profilePicture;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 500,
+      padding: const EdgeInsets.only(top: 10, bottom: 10),
+      decoration: BoxDecoration(
+        color: colorTheme.hue2, 
+        borderRadius: BorderRadius.circular(20)
+      ),
+      child: Column(
+        children: [
+          Row(
+            children: [
+              const SizedBox(width:12),
+              Container(
+                width: 50,
+                height: 50,
+                decoration: BoxDecoration(
+                  border: Border.all(color: colorTheme.light1, width: 2),
+                  shape: BoxShape.circle,
+                  image: DecorationImage(
+                    image: AssetImage(profilePicture),
+                    fit: BoxFit.cover
+                  ),
+                )
+              ),
+              const SizedBox(width: 12),
+              Flexible(child:
+                Text(post.title, softWrap: true ,style: TextStyle(color: colorTheme.light1, fontSize: 20),),
+              ),
+            ]
+          ),
+          const SizedBox(height: 12),
+          Container(
+            width: 478,
+            padding: const EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 5),
+            decoration: BoxDecoration(color: colorTheme.light1, borderRadius: BorderRadius.circular(10)),
+            constraints: const BoxConstraints(
+              minWidth: 478,
+              minHeight: 100
+            ),
+            child: Flexible(
+              child: Text(post.body)),
+          )
+        ]
+      )
+    );
+  }
+}
+
+class AboutSection extends StatelessWidget {
+  const AboutSection({
+    super.key,
+    required this.colorTheme,
+    required this.userInfo,
+  });
+
+  final ColorTheme colorTheme;
+  final UserInfo userInfo;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 150,
+      height: 100,
+      decoration: BoxDecoration(
+        color: colorTheme.hue1, 
+        borderRadius: BorderRadius.circular(20)
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(left: 30.0, top: 10.0),
+            // const EdgeInsets.all(8.0),
+            child: Text('About', style: TextStyle(fontSize: 20, color: colorTheme.hue3, fontWeight: FontWeight.w500)),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 30.0, top: 10),
+            child: Text(userInfo.about, style: TextStyle(fontSize: 16, color: colorTheme.hue3, fontWeight: FontWeight.w400)),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class InterestsSection extends StatelessWidget {
+  const InterestsSection({
+    super.key,
+    required this.colorTheme,
+    required this.userInfo,
+  });
+
+  final ColorTheme colorTheme;
+  final UserInfo userInfo;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Container(
+          alignment: Alignment.center,
+          padding: const EdgeInsets.only(bottom: 10),
+          child: Text('Interests', style: TextStyle(color: colorTheme.light1, fontSize: 20))
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            InterestDisplay(colorTheme: colorTheme, interest: userInfo.interests[0]),
+            InterestDisplay(colorTheme: colorTheme, interest: userInfo.interests[1]),
+            InterestDisplay(colorTheme: colorTheme, interest: userInfo.interests[2]),
+          ]
+        ),
+      ],
     );
   }
 }
