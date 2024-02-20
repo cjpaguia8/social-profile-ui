@@ -31,7 +31,7 @@ void main() {
     ],
     posts: [
       Post(
-        title: "Ranking song of my favorite songs", 
+        title: "Rankings of some of my favorite songs", 
         body: '''
 1.  "Champagne Supernova" by Oasis
 2.  "Comfortably Numb" by Pink Floyd
@@ -42,7 +42,7 @@ void main() {
 7.  "Hey Jude" by The Beatles
 8.  "The Sound of Silence" by Simon & Garfunkel
 9.  "Time" by Pink Floyd
-10.  "Baba ORiley" by The Who'''
+10.  "Baba O'Riley" by The Who'''
       ),
       Post(
         title: "About a couple of my coding projects", 
