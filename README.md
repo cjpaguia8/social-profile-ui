@@ -1,5 +1,6 @@
 # CS 442 MP1: Profile Page
 
+
 ## Overview
 
 In this initial machine problem (MP1), your task is to create a single-screen application that presents a "profile information" page for a user, either yourself or a fictional character, in a hypothetical social networking application. Examples of such apps include professional networking and dating apps.
