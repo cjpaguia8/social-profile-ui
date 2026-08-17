@@ -8,13 +8,13 @@ Color light = const Color.fromARGB(255, 241, 238, 231);
 void main() {
   //Initialize userInfo with the correct information
   UserInfo userInfo = UserInfo(
-    name: 'Shayan Baig',
+    name: 'Maya Garcia',
     about: "Computer science student at IIT",
-    uid: '@Shayanb',
+    uid: '@MayaG',
     school: 'IIT',
-    pronouns: ['he', 'him'],
+    pronouns: ['she', 'her'],
     city: 'Chicago, IL',
-    profilePicture: 'assets/images/shayan.jpg',
+    profilePicture: 'assets/images/profile-avatar.png',
     interests: [
       Interest(
         name: 'Coding',
@@ -73,7 +73,7 @@ In Leo's gaze, a thousand tales arise.'''
       Post(
         title: "First post!", 
         body: '''
-Hi everybody! I'm Shayan and this is my first post ever on this app. Make sure to follow me if you like my content and want to see more!'''
+Hi everybody! I'm Maya and this is my first post ever on this app. Make sure to follow me if you like my content and want to see more!'''
       )
     ]
   );
@@ -89,7 +89,7 @@ Hi everybody! I'm Shayan and this is my first post ever on this app. Make sure t
 
   runApp(MaterialApp(
       home: UserInfoPage(userInfo: userInfo, colorTheme: colorTheme), 
-      title: 'Profile of @shayanb',
+      title: 'Profile of @mayag',
       theme: 
       ThemeData(scaffoldBackgroundColor: const Color.fromARGB(255, 38, 26, 28))
     )
