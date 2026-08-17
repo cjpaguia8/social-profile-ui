@@ -2,7 +2,7 @@
 
 A responsive, single-screen social profile interface built with Flutter. The project explores how reusable widgets, a small data model, and an earthy visual system can turn static profile content into a polished experience across mobile, web, and desktop layouts.
 
-![Social Profile UI running on Windows](assets/images/social-profile-ui.png)
+![Social Profile UI running on Windows](assets/images/ui_screenshot.png)
 
 ## Highlights
 
