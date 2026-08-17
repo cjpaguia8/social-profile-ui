@@ -14,7 +14,7 @@ void main() {
     school: 'IIT',
     pronouns: ['she', 'her'],
     city: 'Chicago, IL',
-    profilePicture: 'assets/images/profile-avatar.png',
+    profilePicture: 'assets/images/profilePicture.png',
     interests: [
       Interest(
         name: 'Coding',
